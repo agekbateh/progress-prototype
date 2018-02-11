@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Progress prototype</title>
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+<body>
+
+
+<div class="wrapper">
+    <div>
+        <div class="component">
+            <h2 class="component__header">Progress</h2>
+            <div class="component__progress-circle">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 365 365" style="enable-background:new 0 0 365 365;" xml:space="preserve">
+                    <path class="mask-path" d="M357.5,182.5c0,45.1-17,86.2-45,117.2c-32,35.5-78.4,57.8-130,57.8c-96.6,0-175-78.4-175-175 c0-47.2,18.7-90.1,49.1-121.6C88.4,28,133.1,7.5,182.5,7.5C279.1,7.5,357.5,85.9,357.5,182.5z"></path>
+                </svg>
+
+                <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 365 365" style="enable-background:new 0 0 365 365;" xml:space="preserve" class="svg-circle">
+                    <path class="svg-circle__path"d="M357.5,182.5c0,45.1-17,86.2-45,117.2c-32,35.5-78.4,57.8-130,57.8c-96.6,0-175-78.4-175-175 c0-47.2,18.7-90.1,49.1-121.6C88.4,28,133.1,7.5,182.5,7.5C279.1,7.5,357.5,85.9,357.5,182.5z"></path>
+                </svg>
+            </div>
+            <div class="component__control-bar">
+                <div class="component__control-bar__controls">
+                    <label for="controls-value" class="controls__item controls__value">
+                        <input type="tel" maxlength="3" id="controls-value" class="controls-value">
+                    </label>
+                    Value
+                </div>
+                <div class="component__control-bar__controls">
+                    <label for="switcher-animate" class="controls__item controls__switcher">
+                        <input type="checkbox" id="switcher-animate" class="switcher-animate">
+                        <span class="switcher__point"></span>
+                    </label>
+                    Animate
+                </div>
+                <div class="component__control-bar__controls">
+                    <label for="switcher-hide" class="controls__item controls__switcher">
+                        <input type="checkbox" id="switcher-hide" class="switcher-hide">
+                        <span class="switcher__point"></span>
+                    </label>
+                    Hidden
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+
+
+</body>
+</html>

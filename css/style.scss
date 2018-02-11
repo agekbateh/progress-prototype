@@ -1,0 +1,186 @@
+@import "reset";
+@import "mixins";
+
+body {
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-size: 16px;
+}
+
+.wrapper {
+    position: relative;
+    display: table;
+    width: 100%;
+    min-height: 100vh;
+    &:before {
+        content: '';
+        display: block;
+        padding-top: 100vh;
+    }
+
+    & > div {
+        display: table-cell;
+        vertical-align: middle;
+        @include respond(tablet) {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .component {
+            padding: 2em;
+            z-index: 999;
+            text-align: center;
+            max-width: 568px;
+            margin: auto;
+            @include box-sizing(border-box);
+
+            @include respond(tablet) {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 75%;
+
+                @include transform(translate(-50%, -50%));
+            }
+            .component__header {
+                margin-bottom: 2em;
+                text-align: left;
+                @include respond(tablet) {
+                    margin-bottom: 3em;
+                }
+            }
+
+            .component__progress-circle {
+                width: 10em;
+                height: 10em;
+                position: relative;
+                visibility: visible;
+                opacity: 1;
+                margin: 0 auto 3em;
+                will-change: transform;
+                @include transition(transform, 0.2s);
+                @include respond(mob) {
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0 2em 0 0;
+                }
+                @include respond(tablet) {
+                    width: 13em;
+                    height: 13em;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0 5em 0 0;
+                }
+                &.animating {
+                    animation: rotation 0.75s infinite linear;
+                }
+                &.hidden {
+                    visibility: hidden;
+                    opacity: 0;
+                }
+                svg {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                    @include transform(rotate(-90deg));
+                    .mask-path {
+                        fill: none;
+                        stroke: #E5E5E5;
+                        stroke-width: 15px;
+                        stroke-miterlimit: 10;
+                    }
+                    .svg-circle__path {
+                        fill: none;
+                        stroke: #FFD633;
+                        stroke-width: 15px;
+                        stroke-miterlimit: 10;
+                        stroke-linecap: round;
+                    }
+                }
+            }
+            .component__control-bar {
+                display: inline-block;
+                text-align: left;
+                @include respond(mob) {
+                    vertical-align: middle;
+                }
+                .component__control-bar__controls {
+                    display: block;
+                    & + .component__control-bar__controls {
+                        margin-top: 1em;
+                    }
+
+                    .controls__item {
+                        margin-right: 0.5em;
+                    }
+
+                    .controls__value {
+                        input[type='tel'] {
+                            width: 4.2em;
+                            border-radius: 25px;
+                            text-align: center;
+                            height: 30px;
+                            line-height: 1;
+                            border: 1px solid lightgray;
+                        }
+                    }
+
+                    .controls__switcher {
+                        position: relative;
+                        display: inline-block;
+                        width: 60px;
+                        height: 30px;
+                        line-height: 30px;
+                        vertical-align: middle;
+
+                        input[type = 'checkbox'] {
+                            position: absolute;
+                            opacity: 0;
+                        }
+
+                        .switcher__point {
+                            width: 60px;
+                            height: 30px;
+                            background-color: #5e5e5e;
+                            position: absolute;
+                            border-radius: 25px;
+                            top: 0;
+                            left: 0;
+                            @include transition(background-color, 0.2s);
+                            &::before {
+                                content: '';
+                                display: block;
+                                position: absolute;
+                                top: 50%;
+                                left: 4px;
+                                width: 23px;
+                                height: 23px;
+                                border-radius: 50%;
+                                background-color: #e9e9e9;
+                                @include transform(translate(0, -50%));
+                                @include transition(transform, 0.3s);
+                            }
+                        }
+                        input:checked + .switcher__point {
+                            background-color: #1ECD97;
+                        }
+                        input:checked + .switcher__point::before {
+                            @include transform(translate(28px, -50%));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include keyframes (rotation) {
+    100% {
+        @include transform(rotate(360deg))
+    }
+}
